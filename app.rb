@@ -3,7 +3,7 @@ require 'socket.io-client-simple'
 
 require_relative './burn'
 
-SERVICE_URL = 'http://localhost'
+SERVICE_URL = 'http://clearbot.herokuapp.com'
 
 socket = SocketIO::Client::Simple.connect SERVICE_URL
 
@@ -16,8 +16,8 @@ socket.on :disconnect do
 end
 
 def play_url(url)
-  puts "Would burn: #{url}"
-  #Burn.burn! url
+  base_burn = ['https://www.dropbox.com/s/ql3z6d7kmoyof99/sick_burn.mp3?dl=1'].sample
+  Burn.burn!(url)
 end
 
 socket.on :play_url do |data|
