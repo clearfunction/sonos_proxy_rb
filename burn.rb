@@ -14,7 +14,7 @@ class Burn
 
   def play_sound(speaker, audio_url)
     puts "Burning sound #{audio_url}:"
-    speaker.voiceover!(audio_url, 50)
+    speaker.voiceover!(audio_url, 30)
   end
 
   def self.burn!(burn_url=nil)
