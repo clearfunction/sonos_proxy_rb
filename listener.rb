@@ -23,7 +23,7 @@ class Listener
   
   SERVICE_URL = 'http://clearbot.herokuapp.com'
 
-  def play_url(url)
+  def self.play_url(url)
     base_burn = ['https://www.dropbox.com/s/ql3z6d7kmoyof99/sick_burn.mp3?dl=1'].sample
     Burn.burn!(url)
   end
@@ -45,7 +45,7 @@ class Listener
       if url.nil?
         puts "Unusable payload: #{data}"
       else
-        play_url url
+        Listener.play_url url
       end
     end
 
