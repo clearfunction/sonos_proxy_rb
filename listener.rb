@@ -22,12 +22,6 @@ class Listener
   end
   
   SERVICE_URL = 'http://clearbot.herokuapp.com'
-
-  def self.play_url(url)
-    base_burn = ['https://www.dropbox.com/s/ql3z6d7kmoyof99/sick_burn.mp3?dl=1'].sample
-    Burn.burn!(url)
-  end
-
   def instrument_socket
     socket.on :connect do
       puts "Connected to server: #{SERVICE_URL}"
@@ -45,7 +39,7 @@ class Listener
       if url.nil?
         puts "Unusable payload: #{data}"
       else
-        Listener.play_url url
+        Listener.play_url(url)
       end
     end
 
@@ -56,5 +50,10 @@ class Listener
 
   def disconnect
     socket.disconnect
+  end
+
+  def self.play_url(url)
+    base_burn = ['https://www.dropbox.com/s/ql3z6d7kmoyof99/sick_burn.mp3?dl=1'].sample
+    Burn.burn!(url)
   end
 end
